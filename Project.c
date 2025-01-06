@@ -2007,14 +2007,14 @@ int main(){
 	int check=0;
 	
 	FILE *file;
-	file=fopen("account.bin", "wb");
+	file=fopen("account.txt", "w");
 	char username[15]="quanghuy";
 	
 	char password[15]="quanghuy123";
 	
-	fwrite(username,sizeof(username[0]),15,file);
+	fprintf(file,"Username : %s", username);
 	
-	fwrite(password,sizeof(password[0]),15,file);
+	fprintf(file,"\nPassword : %s", password);
 	
 	fclose(file);
 	
@@ -2213,8 +2213,6 @@ int main(){
 					printf("\t[6] Classrooms Management.\n");
 					
 					printf("\t[7] Add teacher to class.\n");
-					
-					printf("\t[8] Teacher class information.\n");
 						
 					printf("\t[0] Exit the program.\n");
 						
@@ -2325,11 +2323,6 @@ int main(){
 											AddClassToTeacher();
 											
 										}	
-											if(teacherchoice==8){
-												
-												PrintClass();
-												
-											}
 						}
 					}
 					if(adminchoice == 1) {
