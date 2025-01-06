@@ -447,7 +447,6 @@ void FindStudent(){
 					check=1;
 					printf("\n|===============|======================|============================|===================|==================|");
 					printf("\n|	%d	|%-22s|%-28s|%-17s	|	%d	   |", i+1, sv[i].name, sv[i].email, sv[i].phone, sv[i].classroomID);
-					//printf("\n|---------------|----------------------|----------------------------|-------------------|------------------|");
 				}
 			}
 		}
@@ -457,15 +456,6 @@ void FindStudent(){
 				printf("\nUnvalid !, please enter another Name\n");	
 			}
 
-		
-//		
-//			printf("Student Informations\n");
-//			printf("---------------------\n");	
-//			printf("|	ID	|	Name	       |	Email	            |	Phone	        |   NO.Course      |");	
-//			printf("\n|===============|======================|============================|===================|==================|");
-//			printf("\n|	%d	|%-22s|%-28s|%-17s	|	%d	   |", findpos+1, sv[findpos].name, sv[findpos].email, sv[findpos].phone, sv[findpos].classroomID);
-//			printf("\n|---------------|----------------------|----------------------------|-------------------|------------------|");
-//			
 			while(1){
 				
 				printf("\nGo back(b)? or Exit(0)?:\n");
@@ -531,7 +521,6 @@ void EditStudent(){
 			printf("|	ID	|	Name	       |	Email	            |	Phone	        |   NO.Course      |");	
 			printf("\n|===============|======================|============================|===================|==================|");
 			printf("\n|	%d	|%-22s|%-28s|%-17s	|	%d	   |", sv[findstudent].studentID, sv[findstudent].name, sv[findstudent].email, sv[findstudent].phone, cr[sv[findstudent].classroomID-1].classroomID);
-			//printf("\n|---------------|----------------------|----------------------------|-------------------|------------------|");
 			printf("\n");
 			fflush(stdin);
 			printf("Enter classroom ID (enter 0 to skip) : ");
@@ -697,7 +686,6 @@ void DeleteStudent(){
 				check=0;
 			}
 			for(int i=0;i<amountstudent;i++){
-//				sv[i].studentID=i+1;
 					 if(findstudent == sv[i].studentID){
 						check++;
 					}	
@@ -782,7 +770,6 @@ for(int i=0;i<amountstudent-1;i++){
 	printf("\n|	ID	|	Name	       |	Email	            |	Phone	        |   NO.Course      |");
 	printf("\n|===============|======================|============================|===================|==================|");
 	for(int i = 0; i < amountstudent; i++){
-//				sv[i].studentID=i+1;
 			printf("\n|	%d	|%-22s|%-28s|%-17s	|	%d	   |", sv[i].studentID, sv[i].name, sv[i].email, sv[i].phone, sv[i].classroomID);
 			printf("\n|---------------|----------------------|----------------------------|-------------------|------------------|");	
 	}
@@ -826,7 +813,6 @@ for(int i=0;i<amountstudent-1;i++){
 	printf("\n|	ID	|	Name	       |	Email	            |	Phone	        |   NO.Course      |");
 	printf("\n|===============|======================|============================|===================|==================|");
 	for(int i = 0; i < amountstudent; i++){
-//				sv[i].studentID=i+1;
 			printf("\n|	%d	|%-22s|%-28s|%-17s	|	%d	   |", sv[i].studentID, sv[i].name, sv[i].email, sv[i].phone, sv[i].classroomID);
 			printf("\n|---------------|----------------------|----------------------------|-------------------|------------------|");	
 	}
@@ -1312,7 +1298,6 @@ void FindTeacher(){
 					check=1;
 					printf("\n|===============|======================|============================|===================|==================|");
 					printf("\n|	%d	|%-22s|%-28s|%-17s	|	%d	   |", i+1, tc[i].name, tc[i].email, tc[i].phone, tc[i].classroomID);
-					//printf("\n|---------------|----------------------|----------------------------|-------------------|------------------|");
 				}
 			}
 		}
@@ -1383,32 +1368,6 @@ void EditTeacher(){
 			}
 			
 		}
-		
-//		check=0;
-//		while(check!=1){
-//			check=0;
-//			fflush(stdin);
-//			printf("Enter course name (enter 0 to skip) : ");
-//			
-//				if(strlen(sv1.classroomID)==0){
-//					check=0;
-//					continue;	
-//				}else{
-//					if(strcmp(sv1.classroomID,exit)==0){
-//						printf("information unchanged !\n");
-//						strcpy(sv1.classroomID,sv2.classroomID);
-//						break;
-//					}else{
-//						for(int i=0;i<amountclass;i++){
-//							if(sv1.classroomID,cr[i].classroomID)){
-//								check=1;
-//								printf("ClassID Valid !");
-//								break;	
-//							}	
-//						}		
-//					}	
-//				}
-//		}
 
 		check=0;
 		while(check!=1){
