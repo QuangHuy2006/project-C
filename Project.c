@@ -442,7 +442,7 @@ void FindStudent(){
 			printf("---------------------\n");	
 			printf("|	ID	|	Name	       |	Email	            |	Phone	        |   NO.Course      |");	
 			for(int i=0;i<amountstudent;i++){
-				if(strstr(sv[i].name, findstudent) || strcmp(findstudent, sv[i].name)){
+				if(strstr(sv[i].name, findstudent)){
 					check=1;
 					printf("\n|===============|======================|============================|===================|==================|");
 					printf("\n|	%d	|%-22s|%-28s|%-17s	|	%d	   |", i+1, sv[i].name, sv[i].email, sv[i].phone, sv[i].classroomID);
@@ -645,8 +645,8 @@ void EditStudent(){
 			}
 		}
 		
-		
-		sv[findstudent-1]=sv1;
+		sv1.studentID=sv[findstudent].studentID;
+		sv[findstudent]=sv1;
 		savestudent();
 		while(1){
 			printf("\nGo back(b)? or Exit(0)?:\n");
@@ -1342,7 +1342,7 @@ void EditTeacher(){
 		printf("Enter Teacher's ID : ");
 			scanf("%d", &findteacher);	
 			for(int i=0;i<amountteacher;i++){			
-					if(findteacher == sv1.teacherID ) {
+					if(findteacher == sv[i].teacherID ) {
 						check=1;
 						sv2=tc[i];
 						sv2.teacherID=tc[i].teacherID;
@@ -1471,6 +1471,7 @@ void EditTeacher(){
 				}
 			}
 		}
+		sv1.teacherID=tc[findteacher].teacherID;
 		tc[findteacher-1]=sv1;
 		saveteacher();
 		
@@ -1780,7 +1781,6 @@ void EditClass(){
        				 
     			} else {
         			check = 1;
-        			cr2.classroomID=cr[i].classroomID;
 					cr2=cr[i];
         			break; 
     			}
@@ -1871,7 +1871,8 @@ void EditClass(){
 
 		}
 	}
-	cr[findclass-1]=cr1;
+	cr1.classroomID=cr[findclass].classroomID;
+	cr[findclass]=cr1;
 		saveclass();
 		while(1){
 			printf("\nGo back(b)? or Exit(0)?:\n");
