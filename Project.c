@@ -397,7 +397,6 @@ void PrintStudent(){
 	printf("\n|	ID	|	Name	       |	Email	            |	Phone	        |   NO.Course      |");
 	printf("\n|===============|======================|============================|===================|==================|");
 		for(int i = 0; i < length; i++){
-				sv[i].studentID=i+1;
 				printf("\n|	%d	|%-22s|%-28s|%-17s	|	%s	   |", sv[i].studentID, sv[i].name, sv[i].email, sv[i].phone, cr[sv[i].classroomID-1].classroomName);
 				printf("\n|---------------|----------------------|----------------------------|-------------------|------------------|");	
 			}
@@ -712,7 +711,7 @@ void DeleteStudent(){
 					sv[i].studentID=sv[i+1].studentID;
 					strcpy(sv[i].email,sv[i+1].email);
 					strcpy(sv[i].phone,sv[i+1].phone);
-					sv[i].classroomID==sv[i+1].classroomID;	
+					sv[i].classroomID=sv[i+1].classroomID;	
 				}
 				printf("\nStudent Was Deleted !");
 				amountstudent--;
@@ -1089,7 +1088,6 @@ void AddClassToStudent(){
 			printf("One Class Found For Name : ");
 			gets(findclass);
 			for(int i=0;i<amountclass;i++){
-				cr[i].classroomID=i+1;
 				if(strcmp(findclass, cr[i].classroomName)==0){
 					check++;
 					findpos = i;
@@ -1169,7 +1167,6 @@ void AddClassToTeacher(){
 			printf("One Class Found For Name : ");
 			gets(findclass);
 			for(int i=0;i<amountclass;i++){
-				cr[i].classroomID=i+1;
 				if(strcmp(findclass, cr[i].classroomName)==0){
 					check++;
 					findpos = i;
@@ -1293,7 +1290,6 @@ void FindTeacher(){
 			printf("---------------------\n");	
 			printf("|	ID	|	Name	       |	Email	            |	Phone	        |   NO.Course      |");	
 			for(int i=0;i<amountteacher;i++){
-				tc[i].teacherID=i+1;
 				if(strstr(tc[i].name, findteacher)){
 					check=1;
 					printf("\n|===============|======================|============================|===================|==================|");
@@ -1348,9 +1344,7 @@ void EditTeacher(){
 			
 		printf("Enter Teacher's ID : ");
 			scanf("%d", &findteacher);	
-			for(int i=0;i<amountteacher;i++){
-				sv1.teacherID=i+1;
-				
+			for(int i=0;i<amountteacher;i++){			
 					if(findteacher < 0 || findteacher > amountteacher+1 || findteacher != sv1.teacherID ) {
 						check=0;
 					}else {
@@ -1517,7 +1511,6 @@ void DeleteTeacher(){
 				check=0;
 			}
 			for(int i=0;i<amountteacher;i++){
-				tc[i].teacherID=i+1;
 					 if(findteacher == tc[i].teacherID){
 						check++;
 					}	
@@ -1533,7 +1526,7 @@ void DeleteTeacher(){
 			printf("Teacher Informations\n");
 			printf("---------------------\n");	
 			printf("\n|===============|======================|============================|===================|==================|");
-			printf("\n|	%d	|%-22s|%-28s|%-17s	|	%d	   |", findteacher+1, tc[findteacher].name, tc[findteacher].email, tc[findteacher].phone, cr[findteacher-1].classroomName);
+			printf("\n|	%d	|%-22s|%-28s|%-17s	|	%d	   |", findteacher+1, tc[findteacher].name, tc[findteacher].email, tc[findteacher].phone, cr[tc[findteacher-1].classroomID].classroomName);
 			printf("\n|---------------|----------------------|----------------------------|-------------------|------------------|");
 			printf("\nAre you sure want to delete this teacher? (Y/N) : ");
 			fflush(stdin);
@@ -1544,7 +1537,7 @@ void DeleteTeacher(){
 					tc[i].teacherID=tc[i+1].teacherID;
 					strcpy(tc[i].email, tc[i+1].email);
 					strcpy(tc[i].phone, tc[i+1].phone);
-					strcpy(cr[i-1].classroomName, cr[i].classroomName);	
+					tc[i].classroomID = tc[i+1].classroomID;	
 				}
 				printf("\nTeacher Was Deleted !");
 				amountteacher--;
@@ -1608,7 +1601,16 @@ void AddClass(){
 				check=0;
 				continue;
 			}else{
-			check=1;
+				for(int i=0;i<amountclass;i++){
+					if(strcmp(cr1.classroomName, cr[i].classroomName)==0){
+					check=0;
+					printf("Classroom Name Duplicated !");
+					break;
+					}else{
+						check=1;
+						break;	
+					}
+				}
 			}
 		}
 		
@@ -2047,7 +2049,6 @@ int main(){
 			printf("\n|	ID	|	Name	       |	Email	            |	Phone	        |   NO.Course      |");
 			printf("\n|===============|======================|============================|===================|==================|");
 				for(int i = 0; i < amountstudent; i++){
-					sv[i].studentID=i+1;
 					printf("\n|	%d	|%-22s|%-28s|%-17s	|	%s	   |", sv[i].studentID, sv[i].name, sv[i].email, sv[i].phone, cr[sv[i].classroomID-1].classroomName);
 					printf("\n|---------------|----------------------|----------------------------|-------------------|------------------|");	
 				}
@@ -2073,7 +2074,6 @@ int main(){
 			printf("\n|	ID	|	Name	       |	Email	            |	Phone	        |   NO.Course      |");
 			printf("\n|===============|======================|============================|===================|==================|");
 				for(int i = 0; i < amountteacher; i++){
-					tc[i].teacherID=i+1;
 					printf("\n|	%d	|%-22s|%-28s|%-17s	|	%s	   |", tc[i].teacherID, tc[i].name, tc[i].email, tc[i].phone, cr[tc[i].classroomID-1].classroomName);
 					printf("\n|---------------|----------------------|----------------------------|-------------------|------------------|");	
 				}
