@@ -1601,16 +1601,20 @@ void AddClass(){
 				check=0;
 				continue;
 			}else{
-				for(int i=0;i<amountclass;i++){
-					if(strcmp(cr1.classroomName, cr[i].classroomName)==0){
-					check=0;
-					printf("Classroom Name Duplicated !");
-					break;
-					}else{
-						check=1;
-						break;	
-					}
-				}
+				if(amountclass>=1){
+					for(int i=0;i<amountclass;i++){
+						if(strcmp(cr1.classroomName, cr[i].classroomName)==0){
+							check=0;
+							printf("Classroom Name Duplicated !");
+							break;
+						}else{
+							check=1;
+							break;	
+						}
+					}	
+				}else{
+					check=1;
+				}	
 			}
 		}
 		
