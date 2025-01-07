@@ -1472,7 +1472,7 @@ void EditTeacher(){
 			}
 		}
 		sv1.teacherID=tc[findteacher].teacherID;
-		tc[findteacher-1]=sv1;
+		tc[findteacher]=sv1;
 		saveteacher();
 		
 		while(1){
