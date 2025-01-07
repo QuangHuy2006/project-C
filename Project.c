@@ -442,7 +442,7 @@ void FindStudent(){
 			printf("---------------------\n");	
 			printf("|	ID	|	Name	       |	Email	            |	Phone	        |   NO.Course      |");	
 			for(int i=0;i<amountstudent;i++){
-				if(strstr(sv[i].name, findstudent)){
+				if(strstr(sv[i].name, findstudent) || strcmp(findstudent, sv[i].name)){
 					check=1;
 					printf("\n|===============|======================|============================|===================|==================|");
 					printf("\n|	%d	|%-22s|%-28s|%-17s	|	%d	   |", i+1, sv[i].name, sv[i].email, sv[i].phone, sv[i].classroomID);
@@ -497,19 +497,16 @@ void EditStudent(){
 		printf("Enter Student's ID : ");
 			scanf("%d", &findstudent);	
 			for(int i=0;i<amountstudent;i++){
-					if(findstudent < 0 || findstudent > amountstudent+1 || findstudent != sv[i].studentID ) {
-						check=0;
-					}else {
-						check++;
+					if(findstudent == sv[i].studentID ) {
+						check=1;
+						sv2=sv[i];
+						sv2.studentID=sv[i].studentID;
 						break;
-					}
-							
+					}		
 			}
 			
 			if(check){
 				printf("FOUND !\n");
-				sv2=sv[findstudent-1];
-				findstudent--;
 				break;
 			}else{
 				printf("Unvalid !, please enter another ID\n");	
@@ -519,7 +516,7 @@ void EditStudent(){
 			printf("---------------------\n");	
 			printf("|	ID	|	Name	       |	Email	            |	Phone	        |   NO.Course      |");	
 			printf("\n|===============|======================|============================|===================|==================|");
-			printf("\n|	%d	|%-22s|%-28s|%-17s	|	%d	   |", sv[findstudent].studentID, sv[findstudent].name, sv[findstudent].email, sv[findstudent].phone, cr[sv[findstudent].classroomID-1].classroomID);
+			printf("\n|	%d	|%-22s|%-28s|%-17s	|	%d	   |", sv2.studentID, sv2.name, sv2.email, sv2.phone, cr[sv2.classroomID].classroomID);
 			printf("\n");
 			fflush(stdin);
 			printf("Enter classroom ID (enter 0 to skip) : ");
@@ -1345,18 +1342,19 @@ void EditTeacher(){
 		printf("Enter Teacher's ID : ");
 			scanf("%d", &findteacher);	
 			for(int i=0;i<amountteacher;i++){			
-					if(findteacher < 0 || findteacher > amountteacher+1 || findteacher != sv1.teacherID ) {
-						check=0;
+					if(findteacher == sv1.teacherID ) {
+						check=1;
+						sv2=tc[i];
+						sv2.teacherID=tc[i].teacherID;
+						break;
+						
 					}else {
-						check++;
-					}
-							
+						check=0;
+					}			
 			}
 			
 			if(check){
 				printf("FOUND !\n");
-				sv2=tc[findteacher-1];
-				break;
 			}else{
 				printf("Unvalid !, please enter another ID\n");	
 			}
@@ -1473,7 +1471,6 @@ void EditTeacher(){
 				}
 			}
 		}
-		
 		tc[findteacher-1]=sv1;
 		saveteacher();
 		
@@ -1782,14 +1779,16 @@ void EditClass(){
         			check = 0; 
        				 
     			} else {
-        			check = 1; 
+        			check = 1;
+        			cr2.classroomID=cr[i].classroomID;
+					cr2=cr[i];
         			break; 
     			}
     		}
 
 			if (check) {
     			printf("ID VALID!\n");
-    			cr2=cr[findclass-1];
+    			
 			} else {
    				 printf("ID UNVALID!\n");
 			}
