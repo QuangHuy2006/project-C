@@ -1342,7 +1342,7 @@ void EditTeacher(){
 		printf("Enter Teacher's ID : ");
 			scanf("%d", &findteacher);	
 			for(int i=0;i<amountteacher;i++){			
-					if(findteacher == sv[i].teacherID ) {
+					if(findteacher == tc[i].teacherID ) {
 						check=1;
 						sv2=tc[i];
 						sv2.teacherID=tc[i].teacherID;
